@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>こみちラボ｜吉祥寺の小さなお店のホームページ屋さん</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBFAF6}
+a{color:#24492F}a:hover{color:#16301F}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+@keyframes komichi-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes komichi-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.komichi-track-l{animation:komichi-left 60s linear infinite}
+.komichi-track-r{animation:komichi-right 60s linear infinite}
+.komichi-track-l:hover,.komichi-track-r:hover{animation-play-state:paused}
+@keyframes komichi-fade{0%{opacity:0}3%{opacity:1}16.6%{opacity:1}19.6%{opacity:0}100%{opacity:0}}
+.komichi-slide{animation:komichi-fade 24s linear infinite both}
+.komichi-hdr{transition:transform .25s ease}
+.komichi-navlinks{display:flex;align-items:center;gap:24px}
+.komichi-strip{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.komichi-strip-track{display:flex;gap:12px;width:max-content;animation:komichi-left 45s linear infinite}
+.komichi-mini{flex:0 0 auto;height:clamp(110px,10vw,150px);aspect-ratio:9/19;border:3px solid #1F2A22;border-radius:12px;overflow:hidden;background:#FFFFFF;box-shadow:0 6px 14px rgba(20,50,30,.25)}
+.komichi-price{display:flex;flex-wrap:nowrap;align-items:center;gap:10px 28px}
+.komichi-pnum{font-size:clamp(28px,5vw,60px)}
+.komichi-fab{position:fixed;right:24px;bottom:24px;z-index:30;display:flex;flex-direction:column;gap:10px;align-items:stretch;transition:transform .3s ease,opacity .3s ease}
+.komichi-fab a{box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.komichi-foot{padding-bottom:48px}
+@media (max-width: 1023px){
+}
+@media (max-width: 767px){
+.komichi-logo{font-size:17px !important;letter-spacing:0.02em !important}
+.komichi-hdr img{width:28px !important;height:30px !important}
+.komichi-price{gap:14px}
+.komichi-plabel{font-size:12px !important;padding:2px 8px !important}
+.komichi-navlinks{gap:14px;font-size:13px !important;overflow-x:auto;white-space:nowrap;max-width:62vw}
+.komichi-navlinks .komichi-ig{display:none !important}
+.komichi-fab{left:0;right:0;bottom:0;flex-direction:row;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+.komichi-fab a{flex:1 1 0;box-shadow:none;justify-content:center;font-size:15px !important;padding:12px 8px !important}
+.komichi-hero{padding:56px 20px 48px !important;min-height:0 !important}
+.komichi-foot{padding-bottom:110px}
+}
+@media (prefers-reduced-motion: reduce){.komichi-track-l,.komichi-track-r,.komichi-strip-track{animation:none}.komichi-slide{animation:none}.komichi-slide+.komichi-slide{display:none}}
+</style>
+</helmet>
+
+<div style="font-family: 'Noto Sans JP', sans-serif; color: #1F2A22; background: #FBFAF6; line-height: 1.8; font-size: 16px">
+
+<!-- ===== Header ===== -->
+<header class="komichi-hdr" style="transform: translateY({{ hdrShift }}); position: sticky; top: 0; z-index: 20; background: rgba(251,250,246,0.94); border-bottom: 1px solid #E6E1D3">
+<div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #24492F; flex: 0 0 auto">
+<img src="./assets/cb5ea8a2f631f1615009cb41771a3c9c.png" alt="" style="width: 36px; height: 39px; object-fit: contain">
+<span class="komichi-logo" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 21px; letter-spacing: 0.06em; white-space: nowrap">こみちラボ</span>
+</a>
+<nav aria-label="ページ内メニュー" class="komichi-navlinks" style="font-size: 14px; font-weight: 500">
+<a href="#works" style="text-decoration: none">制作例</a>
+<a href="#shikumi" style="text-decoration: none">しくみ</a>
+<a href="#price" style="text-decoration: none">料金</a>
+<a href="#faq" style="text-decoration: none">よくある質問</a>
+<a href="https://www.instagram.com/komichilab/" class="komichi-ig" aria-label="Instagram（@komichilab）" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #24492F"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#24492F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#24492F"></circle></svg></a>
+</nav>
+</div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section id="top" class="komichi-hero" style="position: relative; overflow: hidden; background: radial-gradient(110% 90% at 85% 30%, #7DB38A 0%, #5A9268 40%, #44795A 100%); padding: 64px 24px 64px; box-sizing: border-box">
+<div style="position: relative; max-width: 1180px; width: 100%; margin: 0 auto; color: #FFFFFF">
+<p style="margin: 0 0 16px; display: inline-block; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.45); color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 6px 16px; border-radius: 999px">お店のためのホームページ屋さん</p>
+<h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(34px, 5vw, 60px); line-height: 1.35; color: #FFFFFF; letter-spacing: 0.02em">小道のいいお店を<br>見つかる、お店に。</h1>
+<div class="komichi-price" style="margin-top: 20px; font-family: 'Zen Maru Gothic', sans-serif">
+<div style="display: flex; align-items: center; gap: 8px">
+<span class="komichi-plabel" style="background: #FFFFFF; color: #24492F; font-weight: 700; font-size: clamp(14px, 1.5vw, 18px); padding: 3px 12px; border-radius: 8px; white-space: nowrap">初期費用</span>
+<span class="komichi-pnum" style="font-weight: 900; line-height: 1.1; color: #FFE3BD; white-space: nowrap">0<span style="font-size: 0.55em">円</span></span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<span class="komichi-plabel" style="background: #FFFFFF; color: #24492F; font-weight: 700; font-size: clamp(14px, 1.5vw, 18px); padding: 3px 12px; border-radius: 8px; white-space: nowrap">月額</span>
+<span class="komichi-pnum" style="font-weight: 900; line-height: 1.1; color: #FFE3BD; white-space: nowrap">2,980<span style="font-size: 0.55em">円</span></span>
+<span style="font-family: 'Noto Sans JP', sans-serif; font-size: 12px; color: #F1F6EE; align-self: flex-end; padding-bottom: 6px; white-space: nowrap">（税込）</span>
+</div>
+</div>
+<div class="komichi-strip" aria-label="制作したデモサイトのスマホ表示" role="img" style="margin-top: 24px">
+<div class="komichi-strip-track" style="padding: 4px 0 10px">
+<sc-for list="{{ strip }}" as="it" hint-placeholder-count="12">
+<div class="komichi-mini" style="background: {{ it.bg }}">
+<sc-if value="{{ it.img }}" hint-placeholder-val="{{ false }}">
+<img src="{{ it.img }}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block">
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<p style="margin: 20px 0 0; font-size: 17px; color: #F1F6EE; max-width: 640px">吉祥寺のお店を中心に、カフェや美容室、雑貨店など。あなたのお店のホームページを、まず私たちが先に作ってお見せします。気に入ったら、月額2,980円でそのまま公開。更新もLINEでご依頼いただけます。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px">
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #06C755; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; box-shadow: 0 6px 16px rgba(0,0,0,0.15)">LINEでデモを依頼する（無料）</a>
+<a href="#works" style="text-decoration: none; background: transparent; color: #FFFFFF; border: 2px solid rgba(255,255,255,0.85); font-weight: 700; font-size: 16px; padding: 14px 26px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">制作例を見る ↓</a>
+</div>
+<p style="margin: 12px 0 0; font-size: 13px; color: #F1F6EE">気に入らなければ、そこで終わり。費用は一切かかりません。※ 流れている画面は、実際に制作したデモサイトです（公式サイトではありません）。</p>
+</div>
+</section>
+
+<!-- ===== Showcase ===== -->
+<section id="works" style="background: #EAF1E4; padding: 72px 0 80px; overflow: hidden">
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center">
+<p style="margin: 0; color: #4E7F5B; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">これまでに作ったホームページ</p>
+<h2 style="margin: 8px 0 12px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); color: #24492F; line-height: 1.5">スマホで見ると、こんな感じです。</h2>
+<p style="margin: 0 0 48px; color: #3A463D">吉祥寺のお店をイメージして、一軒ずつ作りました。タップするとサイトが開きます。</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 32px">
+<div style="overflow: hidden">
+<div class="komichi-track-l" style="display: flex; gap: 28px; width: max-content; padding: 8px 0">
+<sc-for list="{{ rowA }}" as="it" hint-placeholder-count="12">
+<a href="{{ it.url }}" aria-label="{{ it.name }}のデモサイトを開く" style="flex: 0 0 210px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none">
+<p style="margin: 0; color: #24492F; font-weight: 700; font-size: 15px; text-align: center; max-width: 210px; min-height: 27px">{{ it.name }}</p>
+<div style="width: 210px; height: 440px; border: 8px solid #1F2A22; border-radius: 32px; background: #FFFFFF; overflow: hidden; box-sizing: border-box; box-shadow: 0 14px 28px rgba(31,42,34,0.18)">
+<sc-if value="{{ it.img }}" hint-placeholder-val="{{ false }}">
+<img src="{{ it.img }}" alt="{{ it.name }}のデモサイト（スマホ表示）" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block">
+</sc-if>
+<sc-if value="{{ it.noimg }}" hint-placeholder-val="{{ true }}">
+<div style="width: 100%; height: 100%; background: {{ it.bg }}; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; box-sizing: border-box; color: #FFFFFF">
+<p style="margin: 0; font-size: 10px; letter-spacing: 0.14em">KICHIJOJI</p>
+<p style="margin: 2px 0 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 18px; line-height: 1.35">{{ it.name }}</p>
+</div>
+</sc-if>
+</div>
+<span style="background: #24492F; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 10px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">サイトを見る →</span>
+</a>
+</sc-for>
+</div>
+</div>
+<div style="overflow: hidden">
+<div class="komichi-track-r" style="display: flex; gap: 28px; width: max-content; padding: 8px 0">
+<sc-for list="{{ rowB }}" as="it" hint-placeholder-count="12">
+<a href="{{ it.url }}" aria-label="{{ it.name }}のデモサイトを開く" style="flex: 0 0 210px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none">
+<p style="margin: 0; color: #24492F; font-weight: 700; font-size: 15px; text-align: center; max-width: 210px; min-height: 27px">{{ it.name }}</p>
+<div style="width: 210px; height: 440px; border: 8px solid #1F2A22; border-radius: 32px; background: #FFFFFF; overflow: hidden; box-sizing: border-box; box-shadow: 0 14px 28px rgba(31,42,34,0.18)">
+<sc-if value="{{ it.img }}" hint-placeholder-val="{{ false }}">
+<img src="{{ it.img }}" alt="{{ it.name }}のデモサイト（スマホ表示）" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block">
+</sc-if>
+<sc-if value="{{ it.noimg }}" hint-placeholder-val="{{ true }}">
+<div style="width: 100%; height: 100%; background: {{ it.bg }}; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; box-sizing: border-box; color: #FFFFFF">
+<p style="margin: 0; font-size: 10px; letter-spacing: 0.14em">KICHIJOJI</p>
+<p style="margin: 2px 0 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 18px; line-height: 1.35">{{ it.name }}</p>
+</div>
+</sc-if>
+</div>
+<span style="background: #24492F; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 10px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">サイトを見る →</span>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="max-width: 1100px; margin: 56px auto 0; padding: 0 24px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px">
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #C4470F; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">月2,980円ではじめる <span aria-hidden="true">→</span></a>
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #06C755; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 30px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">LINEでデモを依頼する</a>
+</div>
+<p style="margin: 8px auto 0; max-width: 760px; text-align: center; color: #4A564D; font-size: 13px; line-height: 1.8">※ 掲載しているサイトは、こみちラボがご提案用に制作したデモサイトです。各店舗の公式サイトとして公開されているものではなく、店舗さまとの契約・提携を示すものでもありません。</p>
+</div>
+</section>
+
+<!-- ===== LINE band ===== -->
+<section style="background: #F3EDE0; padding: 56px 24px">
+<div style="max-width: 1000px; margin: 0 auto; background: #FFFFFF; border-radius: 24px; padding: 36px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 32px">
+<img src="./assets/d493be695345fbad4109c272750fd05b.png" alt="こみちラボ LINE公式アカウントの友だち追加QRコード" style="width: 140px; height: 140px; flex: 0 0 140px; display: block">
+<div style="flex: 1 1 360px; min-width: 0">
+<p style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(22px, 2.6vw, 30px); color: #24492F; line-height: 1.5">あなたのお店のデモ、無料で作ります。</p>
+<p style="margin: 8px 0 20px; color: #3A463D">LINEで友だち追加して、お店の名前を送るだけ。気に入らなければ、そこで終わりです。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #06C755; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 32px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">LINEで友だち追加</a>
+<a href="#works" style="text-decoration: none; background: #FFFFFF; color: #24492F; border: 2px solid #24492F; font-weight: 700; font-size: 17px; padding: 14px 28px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">制作したデモサイトを見る</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Problem ===== -->
+<section style="background: #FFFFFF; padding: 88px 24px; border-top: 1px solid #E6E1D3; border-bottom: 1px solid #E6E1D3">
+<div style="max-width: 1000px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #5E8F4F; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">こんなこと、ありませんか？</p>
+<h2 style="margin: 8px 0 48px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); color: #24492F; line-height: 1.5">いいお店なのに、<br>ネットでは見つけてもらえていない。</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px">
+<div style="background: #FBFAF6; border-radius: 16px; padding: 28px 24px; border: 1px solid #E6E1D3">
+<p style="margin: 0; font-weight: 700; font-size: 17px; color: #24492F; line-height: 1.6">「予約サイトやInstagramはあるけど、お店の公式サイトはない」</p>
+</div>
+<div style="background: #FBFAF6; border-radius: 16px; padding: 28px 24px; border: 1px solid #E6E1D3">
+<p style="margin: 0; font-weight: 700; font-size: 17px; color: #24492F; line-height: 1.6">「昔作ったサイトの料金や営業時間が、実は古いまま」</p>
+</div>
+<div style="background: #FBFAF6; border-radius: 16px; padding: 28px 24px; border: 1px solid #E6E1D3">
+<p style="margin: 0; font-weight: 700; font-size: 17px; color: #24492F; line-height: 1.6">「制作会社に聞いたら数十万円。更新のたびに追加料金も」</p>
+</div>
+<div style="background: #FBFAF6; border-radius: 16px; padding: 28px 24px; border: 1px solid #E6E1D3">
+<p style="margin: 0; font-weight: 700; font-size: 17px; color: #24492F; line-height: 1.6">「自分で作ろうとしたけど、営業しながらでは時間がない」</p>
+</div>
+</div>
+<p style="margin: 40px 0 0; text-align: center; font-size: 18px; color: #3A463D">本業に集中したいお店にこそ、手間のかからないホームページを。</p>
+</div>
+</section>
+
+<!-- ===== Shikumi ===== -->
+<section id="shikumi" style="background: #F3EDE0; padding: 104px 24px">
+<div style="max-width: 1100px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #9C6A36; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">しくみ</p>
+<h2 style="margin: 8px 0 16px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); color: #24492F; line-height: 1.5">だから、先に作ってお持ちします。</h2>
+<p style="margin: 0 auto 56px; max-width: 680px; text-align: center; color: #3A463D">「どんなサイトにしたいですか？」と聞かれても、すぐには答えられませんよね。こみちラボでは、お店の雰囲気や公開されている情報をもとに、まずホームページを一式作ってお見せします。</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
+<div style="background: #FFFFFF; border-radius: 20px; padding: 36px 28px">
+<p style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 44px; color: #5E8F4F; line-height: 1">01</p>
+<h3 style="margin: 16px 0 10px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">先に、無料で作る</h3>
+<p style="margin: 0; color: #3A463D; font-size: 15px">お店の情報をもとに、こみちラボがホームページを作成します。お店側の準備はほとんどいりません。</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; padding: 36px 28px">
+<p style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 44px; color: #5E8F4F; line-height: 1">02</p>
+<h3 style="margin: 16px 0 10px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">お店で、実物を見て決める</h3>
+<p style="margin: 0; color: #3A463D; font-size: 15px">完成したサイトをお店に持って伺います。ご希望を聞いて直し、気に入ったらご契約。合わなければそこで終わりです。</p>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; padding: 36px 28px">
+<p style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 44px; color: #5E8F4F; line-height: 1">03</p>
+<h3 style="margin: 16px 0 10px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">公開後の更新は、LINEで</h3>
+<p style="margin: 0; color: #3A463D; font-size: 15px">営業時間やメニューの変更は、LINEで送るだけ。管理画面を覚える必要はありません。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Reasons ===== -->
+<section style="padding: 104px 24px">
+<div style="max-width: 1100px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #5E8F4F; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">こみちラボの3つの約束</p>
+<h2 style="margin: 8px 0 56px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); color: #24492F">小さなお店に、ちょうどいいを。</h2>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; background: #FFFFFF; border: 1px solid #E6E1D3; border-radius: 20px; padding: 32px">
+<div style="width: 64px; height: 64px; border-radius: 50%; background: #E8EFE3; display: flex; align-items: center; justify-content: center; flex: 0 0 64px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#24492F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</div>
+<div style="flex: 1 1 400px; min-width: 0">
+<h3 style="margin: 0 0 6px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">見てから、決められる</h3>
+<p style="margin: 0; color: #3A463D">提案書や打ち合わせではなく、完成したサイトを見て判断できます。想像で契約する必要はありません。</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; background: #FFFFFF; border: 1px solid #E6E1D3; border-radius: 20px; padding: 32px">
+<div style="width: 64px; height: 64px; border-radius: 50%; background: #E8EFE3; display: flex; align-items: center; justify-content: center; flex: 0 0 64px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#24492F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+</div>
+<div style="flex: 1 1 400px; min-width: 0">
+<h3 style="margin: 0 0 6px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">街のお店に、寄り添います</h3>
+<p style="margin: 0; color: #3A463D">こみちラボは、街のお店に寄り添うことを大切にしています。LINEだけでも完結しますが、ご希望があればお店まで伺い、写真の撮影やご相談にも対応します。</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; background: #FFFFFF; border: 1px solid #E6E1D3; border-radius: 20px; padding: 32px">
+<div style="width: 64px; height: 64px; border-radius: 50%; background: #E8EFE3; display: flex; align-items: center; justify-content: center; flex: 0 0 64px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#24492F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg>
+</div>
+<div style="flex: 1 1 400px; min-width: 0">
+<h3 style="margin: 0 0 6px; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">お渡ししたあとも、細かな修正まで</h3>
+<p style="margin: 0; color: #3A463D">ホームページは作ってお渡しして終わりではありません。「ここの写真を変えたい」「文章を少し直したい」といった細かな修正も、LINEで気軽にご依頼ください。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== LINE ===== -->
+<section style="padding: 104px 24px">
+<div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0">
+<p style="margin: 0; color: #5E8F4F; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">更新はLINEでひとこと</p>
+<h2 style="margin: 8px 0 24px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); color: #24492F; line-height: 1.5">管理画面は、<br>覚えなくて大丈夫です。</h2>
+<p style="margin: 0 0 24px; color: #3A463D">「来週は臨時休業します」「新メニューの写真です」。いつものLINEで送っていただければ、こちらで反映します。スマホで撮った写真も、明るさを整えてから載せます。</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<li style="display: flex; gap: 10px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5E8F4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg>ログインもパスワードもいりません</li>
+<li style="display: flex; gap: 10px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5E8F4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg>写真は送るだけ</li>
+<li style="display: flex; gap: 10px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5E8F4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"></path></svg>更新費用は月額に含まれます（月3回まで）</li>
+</ul>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; background: #E8EFE3; border-radius: 24px; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; font-size: 15px">
+<div style="align-self: flex-end; background: #5E8F4F; color: #FFFFFF; padding: 12px 16px; border-radius: 18px 18px 4px 18px; max-width: 80%">来週の水曜日、臨時休業にします</div>
+<div style="align-self: flex-start; background: #FFFFFF; padding: 12px 16px; border-radius: 18px 18px 18px 4px; max-width: 80%">承知しました！トップページにお知らせを載せますね。</div>
+<div style="align-self: flex-end; background: #5E8F4F; color: #FFFFFF; padding: 12px 16px; border-radius: 18px 18px 4px 18px; max-width: 80%">あと、秋の新メニューの写真です</div>
+<div style="align-self: flex-start; background: #FFFFFF; padding: 12px 16px; border-radius: 18px 18px 18px 4px; max-width: 80%">美味しそうですね。メニューの一番上に入れて、反映しました。</div>
+<p style="margin: 6px 0 0; font-size: 12px; color: #3E5E36; text-align: center">※ やり取りのイメージです</p>
+</div>
+</div>
+</section>
+
+<!-- ===== Price ===== -->
+<section id="price" style="background: #487D5A; padding: 104px 24px; color: #FFFFFF">
+<div style="max-width: 900px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #FFFFFF; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">料金</p>
+<h2 style="margin: 8px 0 48px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px)">料金は、これだけ。</h2>
+<div style="background: #FFFFFF; color: #1F2A22; border-radius: 28px; padding: 48px 40px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 8px 20px; text-align: center">
+<span style="font-weight: 700; color: #24492F; font-size: 18px">月額</span>
+<span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(56px, 7vw, 80px); color: #24492F; line-height: 1">2,980<span style="font-size: 28px">円</span></span>
+<span style="color: #5B665E">（税込）</span>
+</div>
+<p style="margin: 12px 0 32px; text-align: center; font-weight: 700; color: #9C6A36">初期費用 0円｜デモの制作も無料</p>
+<p style="margin: 0; font-size: 15px; color: #3A463D; text-align: center">解約はいつでもOK。お申し出いただいた月の末日で終了します。</p>
+<div style="margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; border-top: 1px solid #E6E1D3; padding-top: 28px">
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #C4470F; color: #FFFFFF; font-weight: 700; font-size: 18px; padding: 16px 40px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">月2,980円ではじめる <span aria-hidden="true">→</span></a>
+<p style="margin: 0; font-size: 13px; color: #5B665E; text-align: center">デモをご覧いただいた方向け｜クレジットカードで毎月自動のお支払い</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Flow ===== -->
+<section style="background: #F3EDE0; padding: 104px 24px">
+<div style="max-width: 1100px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #9C6A36; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">ご利用の流れ</p>
+<h2 style="margin: 8px 0 48px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); color: #24492F">お店の名前を送るだけで、はじまります。</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+<li style="background: #FFFFFF; border-radius: 16px; padding: 24px">
+<p style="margin: 0; font-weight: 900; color: #9C6A36; font-family: 'Zen Maru Gothic', sans-serif">STEP 1</p>
+<p style="margin: 6px 0 0; font-weight: 700; color: #24492F">LINEかフォームでご連絡</p>
+<p style="margin: 4px 0 0; font-size: 14px; color: #3A463D">お店の名前だけでOKです。</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 16px; padding: 24px">
+<p style="margin: 0; font-weight: 900; color: #9C6A36; font-family: 'Zen Maru Gothic', sans-serif">STEP 2</p>
+<p style="margin: 6px 0 0; font-weight: 700; color: #24492F">デモを無料で制作</p>
+<p style="margin: 4px 0 0; font-size: 14px; color: #3A463D">お店の雰囲気に合わせて作ります。</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 16px; padding: 24px">
+<p style="margin: 0; font-weight: 900; color: #9C6A36; font-family: 'Zen Maru Gothic', sans-serif">STEP 3</p>
+<p style="margin: 6px 0 0; font-weight: 700; color: #24492F">お店で見て、直す</p>
+<p style="margin: 4px 0 0; font-size: 14px; color: #3A463D">ご希望を伺って調整します。</p>
+</li>
+<li style="background: #FFFFFF; border-radius: 16px; padding: 24px">
+<p style="margin: 0; font-weight: 900; color: #9C6A36; font-family: 'Zen Maru Gothic', sans-serif">STEP 4</p>
+<p style="margin: 6px 0 0; font-weight: 700; color: #24492F">ご契約・公開</p>
+<p style="margin: 4px 0 0; font-size: 14px; color: #3A463D">ご連絡から最短1日で公開。</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background: #FFFFFF; padding: 104px 24px; border-top: 1px solid #E6E1D3">
+<div style="max-width: 820px; margin: 0 auto">
+<p style="margin: 0; text-align: center; color: #5E8F4F; font-weight: 700; font-size: 14px; letter-spacing: 0.12em">よくあるご質問</p>
+<h2 style="margin: 8px 0 40px; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.2vw, 38px); color: #24492F">気になること、お答えします。</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. 本当に無料で作ってもらえるんですか？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">はい。完成したサイトをお見せするまで、費用はかかりません。お断りいただいても、しつこく営業することはありません。</p>
+</details>
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. なぜこの価格でできるんですか？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">制作の工程を一つひとつ見直し、無駄な作業を省いているためです。そのぶん、デザインの仕上げや内容の確認は手を抜かず、丁寧に行います。</p>
+</details>
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. パソコンが苦手でも大丈夫ですか？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">大丈夫です。LINEが使えれば、更新のお願いができます。専門用語を使わずにご説明します。</p>
+</details>
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. 今使っている予約サイトやInstagramは？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">そのまま使えます。ホームページから予約ページやInstagramへ、ボタンでつなぐことができます。</p>
+</details>
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. 解約はできますか？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">はい、いつでも解約できます。お申し出いただいた月の末日で終了となり、翌月以降の料金はかかりません。</p>
+</details>
+<details style="background: #FBFAF6; border: 1px solid #E6E1D3; border-radius: 14px; padding: 20px 24px">
+<summary style="font-weight: 700; color: #24492F; font-size: 17px">Q. 吉祥寺以外のお店や、ほかの業種でも大丈夫ですか？</summary>
+<p style="margin: 12px 0 0; color: #3A463D">はい、どんなお店でも大丈夫です。業種や地域を問わずご相談ください。吉祥寺の近くであれば、お店に伺うこともできます。</p>
+</details>
+</div>
+</div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="contact" style="padding: 104px 24px; background: #E8EFE3">
+<div style="max-width: 1000px; margin: 0 auto; text-align: center">
+<img src="./assets/cb5ea8a2f631f1615009cb41771a3c9c.png" alt="" style="width: 88px; height: 95px; object-fit: contain">
+<h2 style="margin: 16px 0 16px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: clamp(26px, 3.4vw, 42px); color: #24492F; line-height: 1.5">まずは、あなたのお店の<br>ホームページを見てみませんか。</h2>
+<p style="margin: 0 0 40px; color: #3A463D; font-size: 17px">LINEでお店の名前を送るだけで、デモを無料でお作りします。</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left">
+<div style="background: #FFFFFF; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+<p style="margin: 0; font-weight: 900; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">LINEで相談・デモ依頼</p>
+<img src="./assets/d493be695345fbad4109c272750fd05b.png" alt="こみちラボ LINE公式アカウントの友だち追加QRコード" style="width: 180px; height: 180px; flex: 0 0 180px; display: block">
+<p style="margin: 0; font-size: 14px; color: #3A463D">スマホのカメラで読み取って友だち追加</p>
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #06C755; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 32px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">LINEで友だち追加</a>
+</div>
+<div id="instagram" style="background: #FFFFFF; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+<p style="margin: 0; font-weight: 900; font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: #24492F">Instagramもやっています</p>
+<div style="width: 180px; height: 180px; border-radius: 40px; background: #24492F; display: flex; align-items: center; justify-content: center"><svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#FFFFFF"></circle></svg></div>
+<p style="margin: 0; font-size: 14px; color: #3A463D">@komichilab｜制作したサイトや吉祥寺のお店を紹介しています</p>
+<a href="https://www.instagram.com/komichilab/" style="text-decoration: none; background: #24492F; color: #FFFFFF; font-weight: 700; font-size: 17px; padding: 16px 32px; border-radius: 999px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">Instagramをフォロー</a>
+</div>
+</div>
+<p style="margin: 28px 0 0; font-size: 14px; color: #3A463D">しつこい営業は一切ありません。気に入らなければ、そこで終わりで構いません。</p>
+</div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="komichi-foot" style="background: #24492F; color: #E8EFE3; padding-top: 48px; padding-left: 24px; padding-right: 24px">
+<div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center">
+<div>
+<p style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 22px; color: #FFFFFF">こみちラボ</p>
+<p style="margin: 4px 0 0; font-size: 14px">街の小さなお店に、デジタルの力を。</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px">
+<a href="#contact" style="color: #E8EFE3">特定商取引法に基づく表記</a>
+<a href="#contact" style="color: #E8EFE3">プライバシーポリシー</a>
+<span>© 2026 こみちラボ</span>
+</div>
+</div>
+</footer>
+
+<!-- ===== Floating CTA ===== -->
+<div class="komichi-fab" style="opacity: {{ fabOpacity }}; transform: translateY({{ fabShift }}); pointer-events: {{ fabPointer }}">
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #06C755; color: #FFFFFF; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L5 20l.9-3.4C4.1 15.3 3 13.5 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"></path></svg>LINEで友だち追加</a>
+<a href="https://line.me/R/ti/p/@031uczlh" style="text-decoration: none; background: #C4470F; color: #FFFFFF; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">月2,980円ではじめる</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7200}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.lastY = 0;
+this.onScroll = () => {
+const y = window.scrollY || document.documentElement.scrollTop || 0;
+const down = y > this.lastY;
+const showNav = y < 80 || !down;
+const showFab = y > 360;
+this.lastY = y;
+const cur = this.state || {};
+if (showNav !== cur.showNav || showFab !== cur.showFab) { this.setState({ showNav: showNav, showFab: showFab }); }
+};
+window.addEventListener('scroll', this.onScroll, { passive: true });
+}
+componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+renderVals() {
+const st = this.state || {};
+const showNav = st.showNav !== false;
+const showFab = st.showFab === true;
+const demos = [{"name": "肉と小料理 ハルウララ", "url": "https://baa2a0d1.komichilab-haruurara-demo.pages.dev/", "bg": "#24492F"}, {"name": "おさかな居酒屋 浜尚", "url": "https://komichilab-milk-demo.pages.dev/hamasho/", "bg": "#9C6A36"}, {"name": "パフェのおみせ 余花", "url": "https://komichilab-milk-demo.pages.dev/yoka/", "bg": "#5E7F4A"}, {"name": "JUURI", "url": "https://komichilab-milk-demo.pages.dev/juuri/", "bg": "#6B4A2A"}, {"name": "milk kichijoji", "url": "https://komichilab-milk-demo.pages.dev/", "bg": "#3C5E48"}, {"name": "貴輝（kiki）", "url": "https://komichilab-milk-demo.pages.dev/kiki/", "bg": "#8A5A3B"}, {"name": "せとうちそらとうみ05", "url": "https://komichilab-milk-demo.pages.dev/07_setouchi/", "bg": "#2F4F3A"}, {"name": "和みcafe felice", "url": "https://komichilab-felice-demo.pages.dev", "bg": "#24492F"}, {"name": "酒座 吉昇亭", "url": "https://komichilab-kisshotei-demo.pages.dev", "bg": "#9C6A36"}, {"name": "吉祥寺 はるへ", "url": "https://komichilab-haruhe-demo.pages.dev/", "bg": "#5E7F4A"}, {"name": "SUIKA（瑞香）", "url": "https://komichilab-milk-demo.pages.dev/auto/suika/", "bg": "#6B4A2A"}, {"name": "Hikagen", "url": "https://komichilab-milk-demo.pages.dev/auto/hikagen-1/", "bg": "#3C5E48"}, {"name": "天ぷら むらやま", "url": "https://komichilab-milk-demo.pages.dev/auto/murayama/", "bg": "#8A5A3B"}, {"name": "スペイン酒場 ビノ", "url": "https://komichilab-milk-demo.pages.dev/auto/vino/", "bg": "#2F4F3A"}, {"name": "le singe d’or", "url": "https://komichilab-milk-demo.pages.dev/auto/singedor/", "bg": "#24492F"}, {"name": "小道（アップルパイ）", "url": "https://komichilab-milk-demo.pages.dev/auto/komichi/", "bg": "#9C6A36"}, {"name": "SUZU MATCHA", "url": "https://komichilab-milk-demo.pages.dev/auto/suzumatcha/", "bg": "#5E7F4A"}, {"name": "Standout coffee", "url": "https://komichilab-milk-demo.pages.dev/auto/standout/", "bg": "#6B4A2A"}, {"name": "よいん", "url": "https://komichilab-milk-demo.pages.dev/auto/yoin/", "bg": "#3C5E48"}, {"name": "That’s Life", "url": "https://komichilab-milk-demo.pages.dev/auto/thatslife/", "bg": "#8A5A3B"}, {"name": "BAR Déguisé", "url": "https://komichilab-milk-demo.pages.dev/auto/deguise/", "bg": "#2F4F3A"}];
+const shots = {"https://baa2a0d1.komichilab-haruurara-demo.pages.dev/": "./assets/a5617abf8d519f57dbe84f0bfb3702b9.jpg", "https://komichilab-milk-demo.pages.dev/hamasho/": "./assets/fcba96d707392c8291daa9451050344d.jpg", "https://komichilab-milk-demo.pages.dev/yoka/": "./assets/8f576df0d28e8a5bb986f055d70571ae.jpg", "https://komichilab-milk-demo.pages.dev/juuri/": "./assets/e815dae328dd824c14bcff0c2324ef04.jpg", "https://komichilab-milk-demo.pages.dev/": "./assets/9531cc85e1613c2d24a1f6057e90d8ff.jpg", "https://komichilab-milk-demo.pages.dev/kiki/": "./assets/437d790f6a6ad9b0c5eeedccbc41e1a6.jpg", "https://komichilab-milk-demo.pages.dev/07_setouchi/": "./assets/fdd45963340fba0abd67a17c1dd93df7.jpg", "https://komichilab-felice-demo.pages.dev": "./assets/d28630b0c430e3211c42f0946ec25c57.jpg", "https://komichilab-kisshotei-demo.pages.dev": "./assets/a7de2df5dae75171d39913a0eedfd87c.jpg", "https://komichilab-haruhe-demo.pages.dev/": "./assets/bc87f83bcb1d830086109eb45fabe8c9.jpg", "https://komichilab-milk-demo.pages.dev/auto/suika/": "./assets/b9dd3d484041fe4f19400d31606f1e72.jpg", "https://komichilab-milk-demo.pages.dev/auto/hikagen-1/": "./assets/330d161965602a33395dbccc1082ee3a.jpg", "https://komichilab-milk-demo.pages.dev/auto/murayama/": "./assets/4b8217d432b8b02924024c4826ad5188.jpg", "https://komichilab-milk-demo.pages.dev/auto/vino/": "./assets/c0b7fd8cfb789ce91a6abc9b84c100f2.jpg", "https://komichilab-milk-demo.pages.dev/auto/singedor/": "./assets/6bb1e2f646639fe945c99e70468b517e.jpg", "https://komichilab-milk-demo.pages.dev/auto/komichi/": "./assets/c79b1fbcbf7e1c32d03308c761ced533.jpg", "https://komichilab-milk-demo.pages.dev/auto/suzumatcha/": "./assets/b6b2387544d8cf04ad30e35e378ef990.jpg", "https://komichilab-milk-demo.pages.dev/auto/standout/": "./assets/2236edb2b1b9267a9ce4aa7fbf23a637.jpg", "https://komichilab-milk-demo.pages.dev/auto/yoin/": "./assets/5b2b17d3f1542ad0be60f694e4405801.jpg", "https://komichilab-milk-demo.pages.dev/auto/thatslife/": "./assets/e375cdfa88b6f40200cf5b616ae600b5.jpg", "https://komichilab-milk-demo.pages.dev/auto/deguise/": "./assets/586626fd6edf5b016709317778c0257d.jpg"};
+const all = demos.map(function (d) { var img = shots[d.url] || ''; return { name: d.name, url: d.url, bg: d.bg, img: img, noimg: !img }; });
+const heroPick = [0, 2, 7, 9, 16, 8];
+const hero = heroPick.map(function (k, n) { var d = all[k]; return { name: d.name, url: d.url, bg: d.bg, img: d.img, noimg: d.noimg, delay: (n * 4) + 's' }; });
+const a = all.slice(0, 11);
+const b = all.slice(11);
+return { hero: hero, strip: all.concat(all), rowA: a.concat(a), rowB: b.concat(b), hdrShift: showNav ? '0' : '-100%', fabOpacity: showFab ? 1 : 0, fabShift: showFab ? '0' : '24px', fabPointer: showFab ? 'auto' : 'none' };
+}
+}
+</script>
+</body>
+</html>
